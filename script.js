@@ -2,11 +2,16 @@
 
 
 let i = 0;
-let time = 1000;
-for (;i<4; i++, time = time+2000) {
-  setTimeout (function() {
-    let num = Math.random().toString();
+let time = 50;
+let charStr = '';
+for (;i<4; i++, time = time+50) {
+  // setTimeout (function() {
+    let num = Date.now().toString();
     num = (num.substr(num.length - 5));
+    charStr = charStr + String.fromCharCode(num);
+    console.log(String.fromCharCode(num));
     console.log(num);
-  }, time)
+  // }, time)
 }
+
+console.log(charStr);
