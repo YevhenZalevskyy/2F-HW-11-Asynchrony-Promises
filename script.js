@@ -15,3 +15,5 @@ for (;i<4; i++, time = time+50) {
 }
 
 console.log(charStr);
+
+document.getElementById('chars').textContent = charStr
