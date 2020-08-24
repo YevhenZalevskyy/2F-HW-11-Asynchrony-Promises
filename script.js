@@ -1,19 +1,22 @@
     /////  HW#11 Asynchrony, Promises  /////
 
-
 let i = 0;
-let time = 50;
 let charStr = '';
-for (;i<4; i++, time = time+50) {
-  // setTimeout (function() {
-    let num = Date.now().toString();
-    num = (num.substr(num.length - 5));
-    charStr = charStr + String.fromCharCode(num);
-    console.log(String.fromCharCode(num));
-    console.log(num);
-  // }, time)
+
+function getChines() {
+  return new Promise(char => {
+    setTimeout (() => {
+      char(String.fromCharCode(Date.now().toString().slice(-5)));
+    }, 50);
+  })
 }
 
-console.log(charStr);
+async function getRandomChinese(length) {
+  for (; i<length; i++) {
+    charStr += await getChines();
+  }
+  console.log(charStr);
+  document.getElementById('chars').textContent = charStr;
+}
 
-document.getElementById('chars').textContent = charStr
+getRandomChinese(4);
